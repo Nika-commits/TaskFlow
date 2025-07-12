@@ -78,37 +78,47 @@ const Admin = () => {
           </div>
         </div>
       </header>
-      <main className="dashboard-main">
-        <section className="input-section" style={{ marginBottom: 32 }}>
-          <form className="task-form" onSubmit={handleAssignTask}>
-            <input
-              type="text"
-              className="task-input"
-              placeholder="Task for users..."
-              value={taskText}
-              onChange={e => setTaskText(e.target.value)}
-              disabled={loading}
-            />
-            <select
-              multiple
-              className="task-input"
-              style={{ minWidth: 180, height: 48 }}
-              value={selectedUsers}
-              onChange={e => setSelectedUsers(Array.from(e.target.selectedOptions, o => o.value))}
-              disabled={loading}
-            >
-              {users.map(u => (
-                <option key={u._id} value={u._id}>{u.username} ({u.email})</option>
-              ))}
-            </select>
+      <main className="dashboard-main admin-main-grid">
+        {/* Left: Assign Task */}
+        <section className="admin-assign-card">
+          <h2 className="admin-section-title">Assign Task to Users</h2>
+          <form className="admin-task-form" onSubmit={handleAssignTask}>
+            <div className="admin-form-group">
+              <label htmlFor="taskText" className="admin-label">Task</label>
+              <input
+                id="taskText"
+                type="text"
+                className="admin-task-input"
+                placeholder="Task for users..."
+                value={taskText}
+                onChange={e => setTaskText(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+            <div className="admin-form-group">
+              <label htmlFor="userSelect" className="admin-label">Select Users</label>
+              <select
+                id="userSelect"
+                multiple
+                className="admin-user-select"
+                value={selectedUsers}
+                onChange={e => setSelectedUsers(Array.from(e.target.selectedOptions, o => o.value))}
+                disabled={loading}
+              >
+                {users.map(u => (
+                  <option key={u._id} value={u._id}>{u.username} ({u.email})</option>
+                ))}
+              </select>
+            </div>
             <button type="submit" className="add-task-btn" disabled={loading}>
               {loading ? 'Assigning...' : 'Assign Task'}
             </button>
           </form>
           {error && <div className="error-message">{error}</div>}
         </section>
-        <section className="task-section">
-          <h2 style={{ marginBottom: 18, color: 'var(--accent-color)' }}>Tasks Assigned by You</h2>
+        {/* Right: Tasks Assigned by You */}
+        <section className="admin-tasks-card">
+          <h2 className="admin-section-title" style={{ color: 'var(--accent-color)' }}>Tasks Assigned by You</h2>
           <ul className="task-list">
             {tasks.map(task => (
               <li className="task-item" key={task._id}>
