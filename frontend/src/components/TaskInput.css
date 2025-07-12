@@ -1,0 +1,106 @@
+.input-section {
+  display: flex;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto 32px auto;
+  flex-wrap: wrap;
+  background: var(--task-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  padding: 24px 24px 18px 24px;
+  border: 1px solid var(--border-color);
+  animation: fadeInApp 0.7s;
+}
+
+.task-form {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.task-input {
+  accent-color: var(--accent-color);
+  font-size: 1.08rem;
+  padding: 12px 18px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 999px;
+  flex: 1;
+  min-width: 180px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  box-shadow: 0 1px 4px var(--shadow-color);
+}
+
+.task-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.task-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-task-btn,
+.clear-tasks-btn {
+  font-size: 1.08rem;
+  font-weight: 600;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  text-align: center;
+  padding: 12px 28px;
+  display: inline-block;
+  border-radius: 999px;
+  transition: background var(--transition), transform var(--transition);
+  cursor: pointer;
+  min-width: 120px;
+  box-shadow: 0 1px 4px var(--shadow-color);
+}
+
+.add-task-btn:hover,
+.clear-tasks-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.add-task-btn:disabled,
+.clear-tasks-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.98rem;
+  width: 100%;
+  margin-top: 8px;
+  text-align: center;
+  background: #fee2e2;
+  border-radius: 8px;
+  padding: 6px 0;
+  border: 1px solid #fecaca;
+  animation: fadeInApp 0.5s;
+}
+
+@media (max-width: 600px) {
+  .input-section {
+    flex-direction: column;
+    gap: 15px;
+    padding: 16px 8px 10px 8px;
+  }
+  .task-form {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .task-input,
+  .add-task-btn,
+  .clear-tasks-btn {
+    width: 100%;
+  }
+} 

@@ -1,0 +1,135 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--task-bg);
+  padding: 18px 22px;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  position: relative;
+  animation: fadeInTask 0.5s;
+}
+
+@keyframes fadeInTask {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item:hover {
+  box-shadow: 0 4px 16px var(--shadow-color);
+  transform: translateY(-2px) scale(1.01);
+  background: var(--input-bg);
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  color: #a1a1aa;
+  opacity: 0.7;
+  background: var(--input-bg);
+  animation: completeTask 0.4s;
+}
+
+@keyframes completeTask {
+  0% { background: var(--task-bg); }
+  100% { background: var(--input-bg); }
+}
+
+.task-text {
+  flex: 1;
+  cursor: pointer;
+  padding: 5px 0;
+  border-radius: 4px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  word-break: break-word;
+}
+
+.task-text:hover {
+  background: rgba(99, 102, 241, 0.07);
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.toggle-btn,
+.delete-btn {
+  background: var(--input-bg);
+  border: none;
+  padding: 7px 12px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  box-shadow: 0 1px 4px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn:hover {
+  background: #d1fae5;
+  color: #059669;
+  transform: scale(1.12) rotate(-10deg);
+}
+
+.delete-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  transform: scale(1.12) rotate(10deg);
+}
+
+.edit-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1.08rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-color);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.edit-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.task-item.admin-task {
+  border: 2px solid var(--accent-color);
+  background: linear-gradient(90deg, var(--task-bg) 80%, #eef2ff 100%);
+  box-shadow: 0 2px 12px var(--shadow-color);
+  position: relative;
+}
+
+.task-item.admin-task .task-text {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .task-item {
+    padding: 12px 8px;
+  }
+  .task-actions {
+    gap: 6px;
+  }
+  .toggle-btn,
+  .delete-btn {
+    padding: 6px 8px;
+    font-size: 1rem;
+  }
+} 

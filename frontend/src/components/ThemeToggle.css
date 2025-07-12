@@ -1,0 +1,31 @@
+.toggle-theme-btn {
+  margin: 0 auto 18px auto;
+  padding: 10px 32px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  text-align: center;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: background var(--transition), color var(--transition), transform 0.18s cubic-bezier(.4,0,.2,1);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.toggle-theme-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.toggle-theme-btn:active {
+  transform: scale(0.97);
+}
+
+.toggle-theme-btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+} 
