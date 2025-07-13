@@ -44,10 +44,10 @@ const Login = () => {
     setLoading(false);
   };
 
-  // Show demo mode only if there's a specific backend connectivity error
-  if (error && error.includes('Backend server is not available') && !error.includes('Invalid credentials')) {
-    return <DemoMode />;
-  }
+  // Temporarily disable demo mode to test backend connection
+  // if (error && error.includes('Backend server is not available') && !error.includes('Invalid credentials')) {
+  //   return <DemoMode />;
+  // }
 
   return (
     <div className="auth-container">
