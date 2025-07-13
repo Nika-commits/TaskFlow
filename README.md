@@ -4,6 +4,15 @@
 
 **[https://nika-commits.github.io/TaskFlow](https://nika-commits.github.io/TaskFlow)**
 
+### To login as admin 
+    ## email: admin@gmail.com
+    ## password: admin123
+
+### TO login as user
+    ## email: user1@gmail.com
+    ## password: pranish
+   ## Or you can register yourself with different credentials
+
 ---
 
 ## About this project
