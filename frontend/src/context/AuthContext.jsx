@@ -81,9 +81,22 @@ export const AuthProvider = ({ children }) => {
             },
           });
         } catch (error) {
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-          dispatch({ type: 'LOGOUT' });
+          // If it's a network error, don't log out immediately
+          if (error.code === 'ERR_NETWORK' || error.message.includes('Network Error')) {
+            console.log('Backend not available, but keeping user logged in for demo');
+            // Keep the user logged in for demo purposes
+            dispatch({
+              type: 'LOGIN_SUCCESS',
+              payload: {
+                user: JSON.parse(user),
+                token,
+              },
+            });
+          } else {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            dispatch({ type: 'LOGOUT' });
+          }
         }
       } else {
         dispatch({ type: 'LOGOUT' });
@@ -133,6 +146,16 @@ export const AuthProvider = ({ children }) => {
       
       return { success: true };
     } catch (error) {
+      // Check if it's a network error (backend not available)
+      if (error.code === 'ERR_NETWORK' || error.message.includes('Network Error')) {
+        const message = 'Backend server is not available. Please check if the server is running.';
+        dispatch({
+          type: 'LOGIN_FAILURE',
+          payload: message,
+        });
+        return { success: false, error: message };
+      }
+      
       const message = error.response?.data?.message || 'Login failed';
       dispatch({
         type: 'LOGIN_FAILURE',
@@ -163,6 +186,17 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (error) {
       console.error('AuthContext: registration error:', error);
+      
+      // Check if it's a network error (backend not available)
+      if (error.code === 'ERR_NETWORK' || error.message.includes('Network Error')) {
+        const message = 'Backend server is not available. Please check if the server is running.';
+        dispatch({
+          type: 'LOGIN_FAILURE',
+          payload: message,
+        });
+        return { success: false, error: message };
+      }
+      
       const message = error.response?.data?.message || 'Registration failed';
       dispatch({
         type: 'LOGIN_FAILURE',
