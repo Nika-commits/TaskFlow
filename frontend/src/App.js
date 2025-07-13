@@ -31,7 +31,7 @@ function AppRoutes() {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
           <AppRoutes />
         </div>
