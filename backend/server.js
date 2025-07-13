@@ -39,7 +39,7 @@ seedAdmins();
 // CORS configuration for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-username.github.io', 'https://your-custom-domain.com'] // Update with your actual frontend URL
+    ? ['https://nika-commits.github.io'] // Your GitHub Pages URL
     : ['http://localhost:3000'],
   credentials: true,
   optionsSuccessStatus: 200
