@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import DemoMode from '../components/DemoMode';
 import './Login.css';
 
 const Login = () => {
@@ -42,6 +43,11 @@ const Login = () => {
     
     setLoading(false);
   };
+
+  // Show demo mode if there's a backend connectivity error
+  if (error && (error.includes('Backend server is not available') || error.includes('Network Error'))) {
+    return <DemoMode />;
+  }
 
   return (
     <div className="auth-container">
