@@ -72,7 +72,7 @@ In `backend/server.js`, update the CORS origins with your actual frontend URL:
 
 ```javascript
 origin: process.env.NODE_ENV === 'production'
-  ? ['https://your-username.github.io'] // Your GitHub Pages URL
+  ? ['https://nika-commits.github.io'] // Your GitHub Pages URL
   : ['http://localhost:3000'],
 ```
 
@@ -89,7 +89,7 @@ After deployment, you'll get a URL like: `https://todo-backend-xyz.onrender.com`
 1. Update `frontend/package.json`:
 
    ```json
-   "homepage": "https://your-username.github.io/todo"
+   "homepage": "https://nika-commits.github.io/TaskFlow"
    ```
 
 2. Install gh-pages:
@@ -125,7 +125,7 @@ After deployment, you'll get a URL like: `https://todo-backend-xyz.onrender.com`
 4. Branch: `gh-pages`
 5. Save
 
-Your app will be available at: `https://your-username.github.io/todo`
+Your app will be available at: `https://nika-commits.github.io/TaskFlow`
 
 ---
 
@@ -137,7 +137,7 @@ Update `backend/server.js` with your actual GitHub Pages URL:
 
 ```javascript
 origin: process.env.NODE_ENV === 'production'
-  ? ['https://your-username.github.io'] // Replace with your actual URL
+  ? ['https://nika-commits.github.io'] // Replace with your actual URL
   : ['http://localhost:3000'],
 ```
 
@@ -159,7 +159,7 @@ Add deployment information to your README:
 ```markdown
 ## 🚀 Live Demo
 
-- **Frontend**: https://your-username.github.io/todo
+- **Frontend**: https://nika-commits.github.io/TaskFlow
 - **Backend API**: https://todo-backend-xyz.onrender.com
 
 ## 🛠️ Tech Stack
