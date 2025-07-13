@@ -36,8 +36,17 @@ async function seedAdmins() {
 
 seedAdmins();
 
+// CORS configuration for production
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-username.github.io', 'https://your-custom-domain.com'] // Update with your actual frontend URL
+    : ['http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -49,6 +58,11 @@ app.use('/api/admin', adminRouter);
 // Basic route for testing
 app.get('/', (req, res) => {
   res.json({ message: 'Todo API is running' });
+});
+
+// Health check endpoint for deployment platforms
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 const PORT = process.env.PORT || 5000;
