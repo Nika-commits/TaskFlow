@@ -92,7 +92,13 @@ export const AuthProvider = ({ children }) => {
                 token,
               },
             });
+          } else if (error.response?.status === 401) {
+            // 401 Unauthorized - token is invalid, log out
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            dispatch({ type: 'LOGOUT' });
           } else {
+            // Other errors - log out
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             dispatch({ type: 'LOGOUT' });
@@ -156,6 +162,7 @@ export const AuthProvider = ({ children }) => {
         return { success: false, error: message };
       }
       
+      // Handle specific error messages from the backend
       const message = error.response?.data?.message || 'Login failed';
       dispatch({
         type: 'LOGIN_FAILURE',

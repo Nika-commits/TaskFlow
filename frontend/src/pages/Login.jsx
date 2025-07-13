@@ -44,8 +44,8 @@ const Login = () => {
     setLoading(false);
   };
 
-  // Show demo mode if there's a backend connectivity error (only for specific network errors)
-  if (error && error.includes('Backend server is not available')) {
+  // Show demo mode only if there's a specific backend connectivity error
+  if (error && error.includes('Backend server is not available') && !error.includes('Invalid credentials')) {
     return <DemoMode />;
   }
 
