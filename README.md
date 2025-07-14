@@ -27,7 +27,7 @@ A full-stack Todo application built with React frontend and Node.js backend, fea
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
 - **Real-time Updates**: Instant task updates and user interface changes
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 **Frontend:**
 
